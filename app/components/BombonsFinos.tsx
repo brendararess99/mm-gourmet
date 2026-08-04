@@ -1,6 +1,11 @@
+"use client";
+
+import { useCarrinho } from "../context/CarrinhoContext";
 import ImagemCategoria from "./ImagemCategoria";
 
 export default function BombonsFinos() {
+  const { adicionarItem } = useCarrinho();
+
   const bombons = [
     "Nozes",
     "Pistache",
@@ -14,11 +19,25 @@ export default function BombonsFinos() {
     "Copinho de Physalis",
   ];
 
+  function adicionarBombom(
+    nome: string,
+    tipo: "Unidade" | "Cento",
+    valor: number
+  ) {
+    adicionarItem({
+      id: `bombom-fino-${nome}-${tipo}`,
+      nome: `✨ Bombom Fino ${nome} - ${tipo}`,
+      preco: valor.toString(),
+      imagem: "/produtos/bombons-finos.jpg",
+    });
+  }
+
   return (
     <section
       id="bombons-finos"
       className="max-w-6xl mx-auto py-20 px-6"
     >
+
       <h2 className="text-4xl font-bold text-[#5A321B] text-center mb-3">
         ✨ Bombons Finos
       </h2>
@@ -33,38 +52,92 @@ export default function BombonsFinos() {
       />
 
       <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
+
         <table className="w-full">
+
           <thead className="bg-[#5A321B] text-white">
+
             <tr>
-              <th className="p-4 text-left">Bombom</th>
-              <th className="p-4 text-right">Unidade</th>
-              <th className="p-4 text-right">Cento</th>
+              <th className="p-4 text-left">
+                Bombom
+              </th>
+
+              <th className="p-4 text-right">
+                Unidade
+              </th>
+
+              <th className="p-4 text-right">
+                Cento
+              </th>
+
+              <th className="p-4 text-center">
+                Pedido
+              </th>
             </tr>
+
           </thead>
 
           <tbody>
+
             {bombons.map((bombom) => (
-              <tr key={bombom} className="border-b last:border-none">
+
+              <tr
+                key={bombom}
+                className="border-b last:border-none"
+              >
+
                 <td className="p-4 font-semibold text-[#5A321B]">
                   {bombom}
                 </td>
-                <td className="p-4 text-right">R$ 9,00</td>
-                <td className="p-4 text-right font-bold text-[#5A321B]">
+
+
+                <td className="p-4 text-right text-[#5A321B] font-bold">
+                  R$ 9,00
+                </td>
+
+
+                <td className="p-4 text-right text-[#5A321B] font-bold">
                   R$ 199,90
                 </td>
+
+
+                <td className="p-4">
+
+                  <div className="flex flex-col gap-2">
+
+                    <button
+                      onClick={() =>
+                        adicionarBombom(bombom, "Unidade", 9)
+                      }
+                      className="bg-[#5A321B] hover:bg-[#73442A] text-white px-3 py-2 rounded-xl transition"
+                    >
+                      + Unidade
+                    </button>
+
+
+                    <button
+                      onClick={() =>
+                        adicionarBombom(bombom, "Cento", 199.9)
+                      }
+                      className="bg-[#A45A32] hover:bg-[#8B4728] text-white px-3 py-2 rounded-xl transition"
+                    >
+                      + Cento
+                    </button>
+
+                  </div>
+
+                </td>
+
               </tr>
+
             ))}
+
           </tbody>
+
         </table>
+
       </div>
 
-      <a
-        href="https://wa.me/5531992103486"
-        target="_blank"
-        className="mt-8 inline-block bg-[#5A321B] hover:bg-[#73442A] text-white px-8 py-4 rounded-full transition"
-      >
-        Fazer Encomenda
-      </a>
     </section>
   );
 }

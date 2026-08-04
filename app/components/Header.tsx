@@ -14,19 +14,22 @@ export default function Header() {
         </div>
 
         <nav className="hidden md:flex gap-6 text-[#5A321B] font-medium">
-          <a href="#bolos" className="hover:text-[#A45A32]">Bolos</a>
-          <a href="#kit-festa" className="hover:text-[#A45A32]">Kit Festa</a>
-          <a href="#doces-tradicionais" className="hover:text-[#A45A32]">Doces</a>
-          <a href="#bombons-finos" className="hover:text-[#A45A32]">Bombons</a>
-        </nav>
+          <a href="#bolos" className="hover:text-[#A45A32]">
+            Bolos
+          </a>
 
-        <a
-          href="https://wa.me/5531992103486"
-          target="_blank"
-          className="bg-[#5A321B] hover:bg-[#73442A] text-white px-5 py-3 rounded-full transition"
-        >
-          Encomendar
-        </a>
+          <a href="#kit-festa" className="hover:text-[#A45A32]">
+            Kit Festa
+          </a>
+
+          <a href="#doces-tradicionais" className="hover:text-[#A45A32]">
+            Doces
+          </a>
+
+          <a href="#bombons-finos" className="hover:text-[#A45A32]">
+            Bombons
+          </a>
+        </nav>
 
       </div>
     </header>

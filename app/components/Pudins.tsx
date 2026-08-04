@@ -1,38 +1,53 @@
+"use client";
+
+import { useCarrinho } from "../context/CarrinhoContext";
 import ImagemCategoria from "./ImagemCategoria";
 
 export default function Pudins() {
+  const { adicionarItem } = useCarrinho();
+
   const pudins = [
     {
       nome: "Mini pudim (100–120 ml)",
-      preco: "R$ 7,90",
+      preco: 7.9,
     },
     {
       nome: "Pudim tradicional (individual)",
-      preco: "R$ 12,90",
+      preco: 12.9,
     },
     {
       nome: "Pudim pequeno (500 g)",
-      preco: "R$ 25,90",
+      preco: 25.9,
     },
     {
       nome: "Pudim médio (1 kg)",
-      preco: "R$ 49,90",
+      preco: 49.9,
     },
     {
       nome: "Pudim grande (1,5 kg)",
-      preco: "R$ 69,90",
+      preco: 69.9,
     },
     {
       nome: "Pudim gourmet (Nutella, Ninho, doce de leite, etc.)",
-      preco: "A partir de R$ 59,90",
+      preco: 59.9,
     },
   ];
+
+  function adicionarPudim(pudim: typeof pudins[0]) {
+    adicionarItem({
+      id: `pudim-${pudim.nome}`,
+      nome: `🍮 ${pudim.nome}`,
+      preco: pudim.preco.toString(),
+      imagem: "/produtos/pudim.jpg",
+    });
+  }
 
   return (
     <section
       id="pudins"
       className="max-w-6xl mx-auto py-20 px-6"
     >
+
       <h2 className="text-4xl font-bold text-[#5A321B] text-center mb-3">
         🍮 Pudins Artesanais
       </h2>
@@ -51,6 +66,7 @@ export default function Pudins() {
         <table className="w-full">
 
           <thead className="bg-[#5A321B] text-white">
+
             <tr>
               <th className="p-4 text-left">
                 Produto
@@ -59,37 +75,51 @@ export default function Pudins() {
               <th className="p-4 text-right">
                 Preço
               </th>
+
+              <th className="p-4 text-center">
+                Pedido
+              </th>
             </tr>
+
           </thead>
 
           <tbody>
+
             {pudins.map((pudim) => (
+
               <tr
                 key={pudim.nome}
                 className="border-b last:border-none"
               >
+
                 <td className="p-4 font-semibold text-[#5A321B]">
                   {pudim.nome}
                 </td>
 
                 <td className="p-4 text-right font-bold text-[#5A321B]">
-                  {pudim.preco}
+                  R$ {pudim.preco.toFixed(2).replace(".", ",")}
                 </td>
+
+                <td className="p-4 text-center">
+
+                  <button
+                    onClick={() => adicionarPudim(pudim)}
+                    className="bg-[#5A321B] hover:bg-[#73442A] text-white px-4 py-2 rounded-xl transition"
+                  >
+                    Adicionar
+                  </button>
+
+                </td>
+
               </tr>
+
             ))}
+
           </tbody>
 
         </table>
 
       </div>
-
-      <a
-        href="https://wa.me/5531992103486"
-        target="_blank"
-        className="mt-8 inline-block bg-[#5A321B] hover:bg-[#73442A] text-white px-8 py-4 rounded-full transition"
-      >
-        Fazer Encomenda
-      </a>
 
     </section>
   );

@@ -1,15 +1,48 @@
+"use client";
+
+import { useCarrinho } from "../context/CarrinhoContext";
 import ImagemCategoria from "./ImagemCategoria";
 
 export default function Kits() {
+  const { adicionarItem } = useCarrinho();
+
   const kits = [
-    { nome: "Kit 1", itens: "Bolo simples 1,5 kg + 50 doces", preco: "R$ 139,90" },
-    { nome: "Kit 2", itens: "Bolo temático 1,5 kg + 50 doces", preco: "R$ 174,90" },
-    { nome: "Kit 3", itens: "Bolo simples 2,5 kg + 100 doces", preco: "R$ 244,90" },
-    { nome: "Kit 4", itens: "Bolo temático 2,5 kg + 100 doces", preco: "R$ 269,90" },
-];
+    {
+      nome: "Kit 1",
+      itens: "Bolo simples 1,5 kg + 50 doces",
+      preco: 139.9,
+    },
+    {
+      nome: "Kit 2",
+      itens: "Bolo temático 1,5 kg + 50 doces",
+      preco: 174.9,
+    },
+    {
+      nome: "Kit 3",
+      itens: "Bolo simples 2,5 kg + 100 doces",
+      preco: 244.9,
+    },
+    {
+      nome: "Kit 4",
+      itens: "Bolo temático 2,5 kg + 100 doces",
+      preco: 269.9,
+    },
+  ];
+
+  function adicionarKit(kit: typeof kits[0]) {
+    adicionarItem({
+      id: `kit-${kit.nome}`,
+      nome: `🎉 ${kit.nome} - ${kit.itens}`,
+      preco: kit.preco.toString(),
+      imagem: "/produtos/kit-festa.jpg",
+    });
+  }
 
   return (
-    <section id="kit-festa" className="max-w-6xl mx-auto py-20 px-6">
+    <section
+      id="kit-festa"
+      className="max-w-6xl mx-auto py-20 px-6"
+    >
 
       <h2 className="text-4xl font-bold text-[#5A321B] text-center mb-3">
         🎉 Kit Festa
@@ -19,12 +52,10 @@ export default function Kits() {
         Kits de bolo e doces preparados para sua comemoração.
       </p>
 
-      <div className="mb-10 overflow-hidden rounded-3xl shadow-xl">
-        <ImagemCategoria
-         src="/produtos/kit-festa.jpg"
-         alt="Kit Festa MM Gourmet"
-        />
-      </div>
+      <ImagemCategoria
+        src="/produtos/kit-festa.jpg"
+        alt="Kit Festa MM Gourmet"
+      />
 
       <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
 
@@ -33,9 +64,21 @@ export default function Kits() {
           <thead className="bg-[#5A321B] text-white">
 
             <tr>
-              <th className="p-4 text-left">Kit</th>
-              <th className="p-4 text-left">Conteúdo</th>
-              <th className="p-4 text-right">Preço</th>
+              <th className="p-4 text-left">
+                Kit
+              </th>
+
+              <th className="p-4 text-left">
+                Conteúdo
+              </th>
+
+              <th className="p-4 text-right">
+                Preço
+              </th>
+
+              <th className="p-4 text-center">
+                Pedido
+              </th>
             </tr>
 
           </thead>
@@ -58,7 +101,18 @@ export default function Kits() {
                 </td>
 
                 <td className="p-4 text-right font-bold text-[#5A321B]">
-                  {kit.preco}
+                  R$ {kit.preco.toFixed(2).replace(".", ",")}
+                </td>
+
+                <td className="p-4 text-center">
+
+                  <button
+                    onClick={() => adicionarKit(kit)}
+                    className="bg-[#5A321B] hover:bg-[#73442A] text-white px-4 py-2 rounded-xl transition"
+                  >
+                    Adicionar
+                  </button>
+
                 </td>
 
               </tr>
@@ -70,14 +124,6 @@ export default function Kits() {
         </table>
 
       </div>
-
-      <a
-        href="https://wa.me/5531992103486"
-        target="_blank"
-        className="mt-8 inline-block bg-[#5A321B] text-white px-8 py-4 rounded-full"
-      >
-        Fazer Encomenda
-      </a>
 
     </section>
   );
