@@ -7,13 +7,15 @@ export default function BombonsTradicionais() {
   const { adicionarItem } = useCarrinho();
 
   const bombons = [
-    "Maracujá",
-    "Limão",
-    "Coco",
     "Brigadeiro",
-    "Uva",
-    "Ninho",
+    "Beijinho",
+    "Cajuzinho",
+    "Olho de Sogra",
+    "Moranguinho",
     "Ele e Ela",
+    "Brigadeiro de Paçoca",
+    "Ninho",
+    "Limaozinho",
   ];
 
   function adicionarBombom(
@@ -32,15 +34,14 @@ export default function BombonsTradicionais() {
   return (
     <section
       id="bombons-tradicionais"
-      className="max-w-6xl mx-auto py-20 px-6"
+      className="max-w-6xl mx-auto py-20 px-4 sm:px-6"
     >
-
       <h2 className="text-4xl font-bold text-[#5A321B] text-center mb-3">
         🍫 Bombons Tradicionais
       </h2>
 
       <p className="text-center text-gray-500 mb-10">
-        Bombons artesanais preparados com sabores clássicos e irresistíveis.
+        Sabores deliciosos para deixar sua comemoração ainda mais especial.
       </p>
 
       <ImagemCategoria
@@ -48,10 +49,9 @@ export default function BombonsTradicionais() {
         alt="Bombons Tradicionais MM Gourmet"
       />
 
-      <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
-
+      {/* TABELA - COMPUTADOR */}
+      <div className="hidden md:block bg-white rounded-3xl shadow-xl overflow-hidden">
         <table className="w-full">
-
           <thead className="bg-[#5A321B] text-white">
             <tr>
               <th className="p-4 text-left">
@@ -73,33 +73,28 @@ export default function BombonsTradicionais() {
           </thead>
 
           <tbody>
-
             {bombons.map((bombom) => (
-
               <tr
                 key={bombom}
                 className="border-b last:border-none"
               >
-
                 <td className="p-4 font-semibold text-[#5A321B]">
                   {bombom}
                 </td>
 
                 <td className="p-4 text-right text-[#5A321B] font-bold">
-                  R$ 7,00
+                  R$ 4,00
                 </td>
 
                 <td className="p-4 text-right text-[#5A321B] font-bold">
-                  R$ 169,90
+                  R$ 99,90
                 </td>
 
                 <td className="p-4">
-
                   <div className="flex flex-col gap-2">
-
                     <button
                       onClick={() =>
-                        adicionarBombom(bombom, "Unidade", 7)
+                        adicionarBombom(bombom, "Unidade", 4)
                       }
                       className="bg-[#5A321B] hover:bg-[#73442A] text-white px-3 py-2 rounded-xl transition"
                     >
@@ -108,27 +103,75 @@ export default function BombonsTradicionais() {
 
                     <button
                       onClick={() =>
-                        adicionarBombom(bombom, "Cento", 169.9)
+                        adicionarBombom(bombom, "Cento", 99.9)
                       }
                       className="bg-[#A45A32] hover:bg-[#8B4728] text-white px-3 py-2 rounded-xl transition"
                     >
                       + Cento
                     </button>
-
                   </div>
-
                 </td>
-
               </tr>
-
             ))}
-
           </tbody>
-
         </table>
-
       </div>
 
+      {/* CARDS - CELULAR */}
+      <div className="md:hidden space-y-4">
+        {bombons.map((bombom) => (
+          <div
+            key={bombom}
+            className="bg-white rounded-2xl shadow-md p-5"
+          >
+            <h3 className="text-xl font-bold text-[#5A321B] mb-4">
+              🍫 {bombom}
+            </h3>
+
+            <div className="grid grid-cols-2 gap-3 mb-4">
+              <div className="bg-[#FFF8F3] rounded-xl p-3 text-center">
+                <p className="text-sm text-gray-500">
+                  Unidade
+                </p>
+
+                <p className="text-lg font-bold text-[#5A321B]">
+                  R$ 4,00
+                </p>
+              </div>
+
+              <div className="bg-[#FFF8F3] rounded-xl p-3 text-center">
+                <p className="text-sm text-gray-500">
+                  Cento
+                </p>
+
+                <p className="text-lg font-bold text-[#5A321B]">
+                  R$ 99,90
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3">
+              <button
+                onClick={() =>
+                  adicionarBombom(bombom, "Unidade", 4)
+                }
+                className="w-full bg-[#5A321B] hover:bg-[#73442A] text-white py-3 rounded-xl font-semibold transition"
+              >
+                + Unidade
+              </button>
+
+              <button
+                onClick={() =>
+                  adicionarBombom(bombom, "Cento", 99.9)
+                }
+                className="w-full bg-[#A45A32] hover:bg-[#8B4728] text-white py-3 rounded-xl font-semibold transition"
+              >
+                + Cento
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }
