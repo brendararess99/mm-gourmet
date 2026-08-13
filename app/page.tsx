@@ -2,6 +2,7 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import MenuCategorias from "./components/MenuCategorias";
 import ProdutosDestaque from "./components/ProdutosDestaque";
+import BoloEmFatia from "./components/BoloEmFatia";
 import WhatsAppButton from "./components/WhatsAppButton";
 import Bolos from "./components/Bolos";
 import Kits from "./components/Kits";
@@ -19,6 +20,10 @@ export default function Home() {
       <Hero />
       <MenuCategorias />
       <ProdutosDestaque />
+
+      {/* Bolo em Fatia */}
+      <BoloEmFatia />
+
       <Bolos />
       <Kits />
       <DocesTradicionais />
@@ -27,6 +32,7 @@ export default function Home() {
       <BombonsFinos />
       <Pudins />
       <Brownies />
+
       <WhatsAppButton />
     </main>
   );
