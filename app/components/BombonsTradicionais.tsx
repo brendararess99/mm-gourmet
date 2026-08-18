@@ -7,15 +7,13 @@ export default function BombonsTradicionais() {
   const { adicionarItem } = useCarrinho();
 
   const bombons = [
+    "Maracujá",
+    "Limão",
+    "Coco",
     "Brigadeiro",
-    "Beijinho",
-    "Cajuzinho",
-    "Olho de Sogra",
-    "Moranguinho",
-    "Ele e Ela",
-    "Brigadeiro de Paçoca",
+    "Uva",
     "Ninho",
-    "Limaozinho",
+    "Ele e Ela",
   ];
 
   function adicionarBombom(
