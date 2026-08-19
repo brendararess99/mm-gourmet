@@ -81,18 +81,18 @@ export default function BombonsTradicionais() {
                 </td>
 
                 <td className="p-4 text-right text-[#5A321B] font-bold">
-                  R$ 4,00
+                  R$ 6,00
                 </td>
 
                 <td className="p-4 text-right text-[#5A321B] font-bold">
-                  R$ 99,90
+                  R$ 149,90
                 </td>
 
                 <td className="p-4">
                   <div className="flex flex-col gap-2">
                     <button
                       onClick={() =>
-                        adicionarBombom(bombom, "Unidade", 4)
+                        adicionarBombom(bombom, "Unidade", 6)
                       }
                       className="bg-[#5A321B] hover:bg-[#73442A] text-white px-3 py-2 rounded-xl transition"
                     >
@@ -101,7 +101,7 @@ export default function BombonsTradicionais() {
 
                     <button
                       onClick={() =>
-                        adicionarBombom(bombom, "Cento", 99.9)
+                        adicionarBombom(bombom, "Cento", 149.9)
                       }
                       className="bg-[#A45A32] hover:bg-[#8B4728] text-white px-3 py-2 rounded-xl transition"
                     >
@@ -133,7 +133,7 @@ export default function BombonsTradicionais() {
                 </p>
 
                 <p className="text-lg font-bold text-[#5A321B]">
-                  R$ 4,00
+                  R$ 6,00
                 </p>
               </div>
 
@@ -143,7 +143,7 @@ export default function BombonsTradicionais() {
                 </p>
 
                 <p className="text-lg font-bold text-[#5A321B]">
-                  R$ 99,90
+                  R$ 149,90
                 </p>
               </div>
             </div>
@@ -151,7 +151,7 @@ export default function BombonsTradicionais() {
             <div className="grid grid-cols-2 gap-3">
               <button
                 onClick={() =>
-                  adicionarBombom(bombom, "Unidade", 4)
+                  adicionarBombom(bombom, "Unidade", 6)
                 }
                 className="w-full bg-[#5A321B] hover:bg-[#73442A] text-white py-3 rounded-xl font-semibold transition"
               >
@@ -160,7 +160,7 @@ export default function BombonsTradicionais() {
 
               <button
                 onClick={() =>
-                  adicionarBombom(bombom, "Cento", 99.9)
+                  adicionarBombom(bombom, "Cento", 149.9)
                 }
                 className="w-full bg-[#A45A32] hover:bg-[#8B4728] text-white py-3 rounded-xl font-semibold transition"
               >
