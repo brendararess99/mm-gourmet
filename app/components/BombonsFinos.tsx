@@ -163,11 +163,13 @@ export default function BombonsFinos() {
         Bombons premium para ocasiões especiais.
       </p>
 
-      {/* IMAGEM GERAL DA CATEGORIA */}
-      <ImagemCategoria
-        src="/produtos/bombons-finos.jpg"
-        alt="Bombons Finos MM Gourmet"
-      />
+      {/* IMAGEM GERAL DA CATEGORIA - SOMENTE COMPUTADOR */}
+      <div className="hidden md:block">
+        <ImagemCategoria
+          src="/produtos/bombons-finos.jpg"
+          alt="Bombons Finos MM Gourmet"
+        />
+      </div>
 
       {/* TABELA - COMPUTADOR */}
       <div className="hidden md:block bg-white rounded-3xl shadow-xl overflow-hidden">
