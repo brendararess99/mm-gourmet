@@ -13,7 +13,6 @@ export default function BombonsTradicionais() {
     "Brigadeiro",
     "Uva",
     "Ninho",
-    "Ele e Ela",
   ];
 
   function adicionarBombom(

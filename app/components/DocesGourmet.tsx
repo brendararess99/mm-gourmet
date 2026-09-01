@@ -16,6 +16,7 @@ export default function DocesGourmet() {
     "Brigadeiro de Maracujá",
     "Brigadeiro de Limão",
     "Doce de Leite com Coco",
+    "Ele e Ela na Amêndoas",
   ];
 
   function adicionarDoce(

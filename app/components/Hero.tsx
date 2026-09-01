@@ -11,15 +11,6 @@ export default function Hero() {
         priority
         className="w-full h-auto"
       />
-
-      <div className="absolute inset-0 flex items-end justify-center pb-8 md:pb-10">
-        <a
-          href="#bolos"
-          className="bg-[#5A321B] hover:bg-[#73442A] px-8 py-3 md:px-10 md:py-4 rounded-full text-base md:text-lg font-semibold text-white shadow-xl transition duration-300"
-        >
-          🍰 Ver Catálogo
-        </a>
-      </div>
     </section>
   );
 }
