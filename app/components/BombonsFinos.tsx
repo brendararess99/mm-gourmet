@@ -3,32 +3,149 @@
 import { useCarrinho } from "../context/CarrinhoContext";
 import ImagemCategoria from "./ImagemCategoria";
 
+type Bombom = {
+  nome: string;
+  imagem: string;
+  precoUnidade: number;
+  precoCento: number;
+  descricao?: string;
+};
+
 export default function BombonsFinos() {
   const { adicionarItem } = useCarrinho();
 
-  const bombons = [
-    "Nozes",
-    "Pistache",
-    "Morango",
-    "Damasco",
-    "Copinho de Cereja",
-    "Coração Vazado",
-    "Bolinho",
-    "Gota de Morango",
-    "Bombom de Cereja",
-    "Copinho de Physalis",
+  const bombons: Bombom[] = [
+    // R$ 8,00 unidade | R$ 199,90 cento
+    {
+      nome: "Bombom de Damasco",
+      imagem: "/produtos/bombons-finos/bombom-damasco.png",
+      precoUnidade: 8,
+      precoCento: 199.9,
+    },
+    {
+      nome: "Bombom de Cereja",
+      imagem: "/produtos/bombons-finos/bombom-cereja.png",
+      precoUnidade: 8,
+      precoCento: 199.9,
+    },
+    {
+      nome: "Cestinha de Nutella",
+      imagem: "/produtos/bombons-finos/cestinha-nutella.png",
+      precoUnidade: 8,
+      precoCento: 199.9,
+    },
+    {
+      nome: "Copinho de Cereja",
+      imagem: "/produtos/bombons-finos/copinho-cereja.png",
+      precoUnidade: 8,
+      precoCento: 199.9,
+    },
+    {
+      nome: "Copinho de Limão Siciliano com Blueberry",
+      imagem:
+        "/produtos/bombons-finos/copinho-limao-siciliano-blueberry.png",
+      precoUnidade: 8,
+      precoCento: 199.9,
+    },
+    {
+      nome: "Copinho de Morango",
+      imagem: "/produtos/bombons-finos/copinho-morango.png",
+      precoUnidade: 8,
+      precoCento: 199.9,
+    },
+    {
+      nome: "Copinho de Physalis",
+      imagem: "/produtos/bombons-finos/copinho-physalis.png",
+      precoUnidade: 8,
+      precoCento: 199.9,
+    },
+    {
+      nome: "Bombom de Nozes",
+      imagem: "/produtos/bombons-finos/nozes.png",
+      precoUnidade: 8,
+      precoCento: 199.9,
+    },
+    {
+      nome: "Pirâmide de Abacaxi",
+      imagem: "/produtos/bombons-finos/piramide-abacaxi.png",
+      precoUnidade: 8,
+      precoCento: 199.9,
+    },
+    {
+      nome: "Bombom de Pistache",
+      imagem: "/produtos/bombons-finos/pistache.png",
+      precoUnidade: 8,
+      precoCento: 199.9,
+    },
+
+    // R$ 10,00 unidade | R$ 229,90 cento
+    {
+      nome: "Esfera de Physalis",
+      imagem: "/produtos/bombons-finos/esfera-physalis.png",
+      precoUnidade: 10,
+      precoCento: 229.9,
+    },
+    {
+      nome: "Crocante de Ovomaltine",
+      imagem: "/produtos/bombons-finos/crocante-ovomaltine.png",
+      precoUnidade: 10,
+      precoCento: 229.9,
+    },
+    {
+      nome: "Caramelo Salgado com Avelã",
+      imagem: "/produtos/bombons-finos/caramelo-salgado-avela.png",
+      precoUnidade: 10,
+      precoCento: 229.9,
+    },
+    {
+      nome: "Coquinho",
+      imagem: "/produtos/bombons-finos/coquinho.png",
+      precoUnidade: 10,
+      precoCento: 229.9,
+    },
+    {
+      nome: "Maracujá",
+      imagem: "/produtos/bombons-finos/maracuja.png",
+      precoUnidade: 10,
+      precoCento: 229.9,
+    },
+    {
+      nome: "Coração Rendado",
+      imagem: "/produtos/bombons-finos/coracao-rendado.png",
+      precoUnidade: 10,
+      precoCento: 229.9,
+    },
+    {
+      nome: "Marmorizados",
+      imagem: "/produtos/bombons-finos/marmorizados.png",
+      precoUnidade: 10,
+      precoCento: 229.9,
+      descricao:
+        "Ganache de Tangerina • Ganache de Amarula • Creme de Amendoim",
+    },
   ];
 
   function adicionarBombom(
-    nome: string,
-    tipo: "Unidade" | "Cento",
-    valor: number
+    bombom: Bombom,
+    tipo: "Unidade" | "Cento"
   ) {
+    const valor =
+      tipo === "Unidade"
+        ? bombom.precoUnidade
+        : bombom.precoCento;
+
     adicionarItem({
-      id: `bombom-fino-${nome}-${tipo}`,
-      nome: `✨ Bombom Fino ${nome} - ${tipo}`,
+      id: `bombom-fino-${bombom.nome}-${tipo}`,
+      nome: `✨ ${bombom.nome} - ${tipo}`,
       preco: valor.toString(),
-      imagem: "/produtos/bombons-finos.jpg",
+      imagem: bombom.imagem,
+    });
+  }
+
+  function formatarPreco(valor: number) {
+    return valor.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
     });
   }
 
@@ -37,6 +154,7 @@ export default function BombonsFinos() {
       id="bombons-finos"
       className="max-w-6xl mx-auto py-20 px-4 sm:px-6"
     >
+      {/* TÍTULO */}
       <h2 className="text-4xl font-bold text-[#5A321B] text-center mb-3">
         ✨ Bombons Finos
       </h2>
@@ -45,6 +163,7 @@ export default function BombonsFinos() {
         Bombons premium para ocasiões especiais.
       </p>
 
+      {/* IMAGEM GERAL DA CATEGORIA */}
       <ImagemCategoria
         src="/produtos/bombons-finos.jpg"
         alt="Bombons Finos MM Gourmet"
@@ -76,26 +195,48 @@ export default function BombonsFinos() {
           <tbody>
             {bombons.map((bombom) => (
               <tr
-                key={bombom}
-                className="border-b last:border-none"
+                key={bombom.nome}
+                className="border-b last:border-none hover:bg-[#FFF8F3] transition"
               >
-                <td className="p-4 font-semibold text-[#5A321B]">
-                  {bombom}
+                {/* FOTO + NOME */}
+                <td className="p-4">
+                  <div className="flex items-center gap-4">
+                    <img
+                      src={bombom.imagem}
+                      alt={bombom.nome}
+                      className="w-24 h-24 object-cover rounded-2xl shadow-md flex-shrink-0"
+                    />
+
+                    <div>
+                      <p className="font-semibold text-[#5A321B] text-lg">
+                        {bombom.nome}
+                      </p>
+
+                      {bombom.descricao && (
+                        <p className="text-sm text-gray-500 mt-1 max-w-sm leading-relaxed">
+                          {bombom.descricao}
+                        </p>
+                      )}
+                    </div>
+                  </div>
                 </td>
 
-                <td className="p-4 text-right text-[#5A321B] font-bold">
-                  R$ 9,00
+                {/* PREÇO UNIDADE */}
+                <td className="p-4 text-right text-[#5A321B] font-bold whitespace-nowrap">
+                  {formatarPreco(bombom.precoUnidade)}
                 </td>
 
-                <td className="p-4 text-right text-[#5A321B] font-bold">
-                  R$ 199,90
+                {/* PREÇO CENTO */}
+                <td className="p-4 text-right text-[#5A321B] font-bold whitespace-nowrap">
+                  {formatarPreco(bombom.precoCento)}
                 </td>
 
+                {/* BOTÕES */}
                 <td className="p-4">
                   <div className="flex flex-col gap-2">
                     <button
                       onClick={() =>
-                        adicionarBombom(bombom, "Unidade", 9)
+                        adicionarBombom(bombom, "Unidade")
                       }
                       className="bg-[#5A321B] hover:bg-[#73442A] text-white px-3 py-2 rounded-xl transition"
                     >
@@ -104,7 +245,7 @@ export default function BombonsFinos() {
 
                     <button
                       onClick={() =>
-                        adicionarBombom(bombom, "Cento", 199.9)
+                        adicionarBombom(bombom, "Cento")
                       }
                       className="bg-[#A45A32] hover:bg-[#8B4728] text-white px-3 py-2 rounded-xl transition"
                     >
@@ -119,56 +260,75 @@ export default function BombonsFinos() {
       </div>
 
       {/* CARDS - CELULAR */}
-      <div className="md:hidden space-y-4">
+      <div className="md:hidden space-y-5">
         {bombons.map((bombom) => (
           <div
-            key={bombom}
-            className="bg-white rounded-2xl shadow-md p-5"
+            key={bombom.nome}
+            className="bg-white rounded-2xl shadow-md overflow-hidden"
           >
-            <h3 className="text-xl font-bold text-[#5A321B] mb-4">
-              ✨ {bombom}
-            </h3>
+            {/* FOTO INDIVIDUAL */}
+            <img
+              src={bombom.imagem}
+              alt={bombom.nome}
+              className="w-full aspect-square object-cover"
+            />
 
-            <div className="grid grid-cols-2 gap-3 mb-4">
-              <div className="bg-[#FFF8F3] rounded-xl p-3 text-center">
-                <p className="text-sm text-gray-500">
-                  Unidade
-                </p>
+            <div className="p-5">
+              {/* NOME */}
+              <h3 className="text-xl font-bold text-[#5A321B] mb-2">
+                ✨ {bombom.nome}
+              </h3>
 
-                <p className="text-lg font-bold text-[#5A321B]">
-                  R$ 9,00
+              {/* DESCRIÇÃO */}
+              {bombom.descricao && (
+                <p className="text-sm text-gray-500 mb-4 leading-relaxed">
+                  {bombom.descricao}
                 </p>
+              )}
+
+              {/* PREÇOS */}
+              <div className="grid grid-cols-2 gap-3 mb-4">
+                <div className="bg-[#FFF8F3] rounded-xl p-3 text-center">
+                  <p className="text-sm text-gray-500">
+                    Unidade
+                  </p>
+
+                  <p className="text-lg font-bold text-[#5A321B]">
+                    {formatarPreco(bombom.precoUnidade)}
+                  </p>
+                </div>
+
+                <div className="bg-[#FFF8F3] rounded-xl p-3 text-center">
+                  <p className="text-sm text-gray-500">
+                    Cento
+                  </p>
+
+                  <p className="text-lg font-bold text-[#5A321B]">
+                    {formatarPreco(bombom.precoCento)}
+                  </p>
+                </div>
               </div>
 
-              <div className="bg-[#FFF8F3] rounded-xl p-3 text-center">
-                <p className="text-sm text-gray-500">
-                  Cento
-                </p>
+              {/* BOTÕES */}
+              <div className="grid grid-cols-2 gap-3">
+                <button
+                  onClick={() =>
+                    adicionarBombom(bombom, "Unidade")
+                  }
+                  className="w-full bg-[#5A321B] hover:bg-[#73442A] text-white py-3 rounded-xl font-semibold transition"
+                >
+                  + Unidade
+                </button>
 
-                <p className="text-lg font-bold text-[#5A321B]">
-                  R$ 199,90
-                </p>
+                <button
+                  onClick={() =>
+                    adicionarBombom(bombom, "Cento")
+                  }
+                  className="w-full bg-[#A45A32] hover:bg-[#8B4728] text-white py-3 rounded-xl font-semibold transition"
+                >
+                  + Cento
+                </button>
               </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-3">
-              <button
-                onClick={() =>
-                  adicionarBombom(bombom, "Unidade", 9)
-                }
-                className="w-full bg-[#5A321B] hover:bg-[#73442A] text-white py-3 rounded-xl font-semibold transition"
-              >
-                + Unidade
-              </button>
-
-              <button
-                onClick={() =>
-                  adicionarBombom(bombom, "Cento", 199.9)
-                }
-                className="w-full bg-[#A45A32] hover:bg-[#8B4728] text-white py-3 rounded-xl font-semibold transition"
-              >
-                + Cento
-              </button>
             </div>
           </div>
         ))}
